@@ -1,0 +1,112 @@
+﻿<Window x:Class="PublicChatApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PublicChatApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="test" Width="30" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Canvas Name="MsgCanvas" Visibility="Collapsed" Background="Transparent" Panel.ZIndex="1000" Grid.Column="1">
+            <Border  Name="MsgBorder" Background="Red" Canvas.Right="10" Canvas.Top="10" CornerRadius="5, 0, 5, 5" Padding="10" MaxWidth="250" MinWidth="150" MaxHeight="300">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="Info" Name="MsgTitle" FontWeight="Bold" FontSize="16" Grid.Row="0" />
+
+                    <TextBlock Name="MsgText" Text="Message" TextWrapping="Wrap" Grid.Row="1" Margin="0,5" />
+
+                    <Button Content="OK" Name="OkButton" Grid.Row="2" Width="50" Height="25" HorizontalAlignment="Right" Margin="0,5,0,0" Click="OkMsgCanvas"/>
+                </Grid>
+            </Border>
+        </Canvas>
+
+
+
+        <Border Name="menyuBorder" BorderThickness="0, 0, 2, 0" >
+
+            <Grid Name="Menyu" Grid.Column="0"  Background="SkyBlue">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+                <Label Content="Chats" Name="MenyuTitle" Grid.Column="0" Grid.Row="0" FontFamily="Arial Black" FontWeight="Bold" FontSize="16"></Label>
+                <Grid Grid.Column="1">
+                    <Button  Click="MenyuOnOff" Name="OnOffBtn" Grid.Column="1"  Content="☰" Height="20" Width="20" Margin="5" VerticalAlignment="Top" FontFamily="Arial Black" FontWeight="Bold"/>
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0" Height="100">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Name="Create" Content="Create" Height="30" Width="100" Margin="10" HorizontalAlignment="Left" Click="CreateButton_Click" FontWeight="Bold" FontSize="14" FontFamily="Arial Black" Grid.Row="0"/>
+                    <Button Name="Connect" Content="Connect" Height="30" Width="100" Margin="10" HorizontalAlignment="Left" Click="ConnectBtn_Click" FontWeight="Bold" FontSize="14" FontFamily="Arial Black" Grid.Row="1"/>
+                </Grid>
+
+            </Grid>
+        </Border>
+
+        <Grid Grid.Column="1" Name="MsgContainer" IsEnabled="False">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Name="MessagesListBoxGrid" Margin="10,0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Content="ChatName" Name="ChatName" Grid.Row="0" FontWeight="Bold" FontSize="16" FontFamily="Arial Black"/>
+                    <Button Name="SettingBtn" Click="SettingButton_Click" Content="setting" Margin="10, 3, 0, 3"  Padding="10, 0"  Grid.Column="1" FontWeight="Bold" FontFamily="Arial Black" FontSize="14"></Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Name="GridListContainer" Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <ListBox Name="MessagesListBox" Grid.Row="1"  BorderBrush="Black" Margin="0,0,0,0" />
+                    <ListBox Name="onlineListBox" Grid.Column="1" Background="#FF8E8888" Grid.Row="1" BorderBrush="Black" Margin="0,0,0,0" Foreground="#FFF9F7F7" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="30" />
+                </Grid.ColumnDefinitions>
+                <Label Content="Message" Name="TextBoxTitle" Grid.Column="0" Grid.Row="0" Margin="10, 0"></Label>
+                <Grid  Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBox Name="MessageTextBox" VerticalContentAlignment="Center" Grid.Column="0" Margin="10,0,0,10"  Height="30" VerticalAlignment="Bottom" />
+                    <Button Name="SendButton" Grid.Column="1" Content="Send" Margin="10,0,10,10" Height="30" VerticalAlignment="Bottom" Click="SendButton_Click"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
